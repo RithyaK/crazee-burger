@@ -1,10 +1,10 @@
+import LoginPage from "./components/pages/LoginPage";
+
 function App() {
   // state
-
   // comportement
 
-  // affichage (render)
-  // JSX
-  return <p>test</p>;
+  // affichage
+  return <LoginPage />;
 }
 export default App;
