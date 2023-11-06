@@ -1,13 +1,10 @@
-import { useState } from 'react'
-import './App.css'
-
 function App() {
+  // state
 
-  return (
-    <>
-    <h1>renxe</h1>
-    </>
-  )
+  // comportement
+
+  // affichage (render)
+  // JSX
+  return <p>test</p>;
 }
-
-export default App
+export default App;
