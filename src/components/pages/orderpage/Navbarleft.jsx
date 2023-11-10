@@ -16,9 +16,6 @@ export default Navbarleft;
 const NavbarLeftStyle = styled.div`
   padding-left: 20px;
 
-  &:hover {
-    cursor: pointer;
-  }
   .logo-orderpage h1 {
     font-size: 36px;
   }

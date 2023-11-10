@@ -5,14 +5,14 @@ import { IoChevronForward } from "react-icons/io5";
 import Input from "../reusable-ui/Input";
 import { BsPersonCircle } from "react-icons/bs";
 import PrimaryButton from "../reusable-ui/PrimaryButton";
+import { useInfoContext } from "../../context/InfoContext";
 
 const LoginForm = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [username, setUsername] = useInfoContext();
   const navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
-    setInputValue("");
-    navigate(`orderpage/${inputValue}`);
+    navigate(`orderpage/${username}`);
   }
   return (
     <FormStyle action="submit" onSubmit={handleSubmit}>
@@ -21,8 +21,8 @@ const LoginForm = () => {
       <div className="containerformbottom">
         <h2>Connectez-vous</h2>
         <Input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder={"Entrez votre prénom"}
           required
           Icon={<BsPersonCircle className="icon" />}

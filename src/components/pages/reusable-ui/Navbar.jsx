@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Navbarleft from "../orderpage/Navbarleft";
 import Navbarright from "../orderpage/Navbarright";
-const Navbar = ({ username }) => {
+const Navbar = () => {
   return (
     <NavbarStyle className="navbar">
       <Navbarleft />
-      <Navbarright username={username} />
+      <Navbarright />
     </NavbarStyle>
   );
 };
