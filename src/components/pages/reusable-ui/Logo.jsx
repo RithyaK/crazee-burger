@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <LogoStyle>
       <h1>CRAZEE</h1>
-      <img src={logo} alt="logoburger" height="150px" width="200px" />
+      <img src={logo} alt="logoburger" />
       <h1>BURGER</h1>
     </LogoStyle>
   );
@@ -14,20 +14,24 @@ const Logo = () => {
 export default Logo;
 
 const LogoStyle = styled.div`
-display: flex;
-align-items: center;
-    color: ${theme.colors.primary};
+  display: flex;
+  align-items: center;
+  h1 {
     text-align: center;
-    font-family: Amatic SC, cursive;
-    font-size: ${theme.fonts.P4};
+    color: #ffa01b;
+    font-size: 36px;
     font-style: normal;
-    font-weight: ${theme.weights.bold};
-    line-height: 115px; /* 104.545% */
-    letter-spacing: 1.5px;
+    line-height: 46px;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
   }
   img {
     object-fit: contain;
-    object-position:center;
+    object-position: center;
+    height: 60px;
+    width: 80px; // for Safari and Firefox
+    margin: 0 ${theme.gridUnit / 2}px;
   }
 `;
