@@ -1,12 +1,10 @@
+import { refreshPage } from "../../../utils/window";
 import Logo from "../reusable-ui/Logo";
 import styled from "styled-components";
 const Navbarleft = () => {
-  function loadingLogo() {
-    console.log("test");
-  }
   return (
     <NavbarLeftStyle className="navbarleft">
-      <Logo onClick={loadingLogo} className={"logo-orderpage"} />
+      <Logo onClick={refreshPage} className={"logo-orderpage"} />
     </NavbarLeftStyle>
   );
 };
@@ -16,6 +14,9 @@ export default Navbarleft;
 const NavbarLeftStyle = styled.div`
   padding-left: 20px;
 
+  .logo-orderpage {
+    cursor: pointer;
+  }
   .logo-orderpage h1 {
     font-size: 36px;
   }

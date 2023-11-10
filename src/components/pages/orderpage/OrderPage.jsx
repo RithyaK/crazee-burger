@@ -2,13 +2,17 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../reusable-ui/Navbar";
 import Main from "./Main";
+import { useEffect } from "react";
+import { useInfoContext } from "../../context/InfoContext";
 
 const OrderPage = () => {
   //
-  const { username } = useParams();
-
+  const { usernameparams } = useParams();
+  const [username, setUsername] = useInfoContext();
   //
-
+  useEffect(() => {
+    setUsername(usernameparams);
+  }, []);
   //
   return (
     <ContainerStyle>
