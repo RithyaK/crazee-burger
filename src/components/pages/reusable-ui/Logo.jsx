@@ -1,9 +1,9 @@
 import { theme } from "../../../../theme";
 import logo from "../../../assets/logo.png";
 import styled from "styled-components";
-const Logo = () => {
+const Logo = ({ className }) => {
   return (
-    <LogoStyle>
+    <LogoStyle className={className}>
       <h1>CRAZEE</h1>
       <img src={logo} alt="logoburger" />
       <h1>BURGER</h1>
@@ -19,7 +19,6 @@ const LogoStyle = styled.div`
   h1 {
     text-align: center;
     color: #ffa01b;
-    font-size: 36px;
     font-style: normal;
     line-height: 46px;
     font-weight: 700;
@@ -30,8 +29,6 @@ const LogoStyle = styled.div`
   img {
     object-fit: contain;
     object-position: center;
-    height: 60px;
-    width: 80px; // for Safari and Firefox
     margin: 0 ${theme.gridUnit / 2}px;
   }
 `;

@@ -6,7 +6,7 @@ const Navbarleft = () => {
   }
   return (
     <NavbarLeftStyle className="navbarleft">
-      <Logo onClick={loadingLogo} />
+      <Logo onClick={loadingLogo} className={"logo-orderpage"} />
     </NavbarLeftStyle>
   );
 };
@@ -18,5 +18,12 @@ const NavbarLeftStyle = styled.div`
 
   &:hover {
     cursor: pointer;
+  }
+  .logo-orderpage h1 {
+    font-size: 36px;
+  }
+  .logo-orderpage img {
+    height: 60px;
+    width: 80px; // for Safari and Firefox
   }
 `;

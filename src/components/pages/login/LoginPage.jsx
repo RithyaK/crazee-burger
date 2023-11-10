@@ -5,7 +5,7 @@ import Logo from "../reusable-ui/Logo";
 const LoginPage = () => {
   return (
     <Container>
-      <Logo />
+      <Logo className={"logo-loginpage"} />
       <LoginForm />
     </Container>
   );
@@ -34,5 +34,12 @@ const Container = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+  }
+  .logo-loginpage h1 {
+    font-size: 100px;
+  }
+  .logo-loginpage img {
+    height: 150px;
+    width: 150px; // for Safari and Firefox
   }
 `;
