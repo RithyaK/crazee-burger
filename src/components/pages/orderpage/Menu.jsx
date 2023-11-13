@@ -1,29 +1,21 @@
-import PrimaryButton from "../reusable-ui/PrimaryButton";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import styled from "styled-components";
 import { useState } from "react";
+import Product from "./Product";
+import { formatPrice } from "../../../utils/maths";
 
 const Menu = () => {
   const [products, setProducts] = useState(fakeMenu2);
 
-  function handleButton() {}
-
   return (
     <MenuStyle>
-      {products.map((burger) => (
-        <div className="card" key={burger.id}>
-          <img
-            src={burger.imageSource}
-            alt={burger.title}
-            width="200px"
-            height="145px"
-          />
-          <h1>{burger.title}</h1>
-          <div className="container-price-button">
-            <p>{burger.price.toFixed(2)}$</p>
-            <PrimaryButton label={"Ajouter"} onClick={handleButton} />
-          </div>
-        </div>
+      {products.map((product) => (
+        <Product
+          key={product.id}
+          leftDescription={formatPrice(product.price)}
+          imageSource={product.imageSource}
+          title={product.title}
+        />
       ))}
     </MenuStyle>
   );
@@ -44,21 +36,4 @@ const MenuStyle = styled.div`
   overflow-y: scroll;
 
   height: 80vh;
-  .card {
-    width: 200px;
-    height: 270px;
-    background: white;
-    border: 1px solid grey;
-    border-radius: 15px;
-    text-align: center;
-    padding: 50px 20px 10px 20px;
-    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-    font-family: Amatic SC;
-  }
-  .container-price-button {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: none;
-  }
 `;

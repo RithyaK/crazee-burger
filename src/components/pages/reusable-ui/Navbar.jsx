@@ -19,6 +19,8 @@ const NavbarStyle = styled.div`
   background: #fff;
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid black;
+
   .logo-orderpage {
     cursor: pointer;
   }
