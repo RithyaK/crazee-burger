@@ -1,12 +1,16 @@
 import PrimaryButton from "../reusable-ui/PrimaryButton";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Menu = () => {
+  const [products, setProducts] = useState(fakeMenu2);
+
   function handleButton() {}
+
   return (
     <MenuStyle>
-      {fakeMenu2.map((burger) => (
+      {products.map((burger) => (
         <div className="card" key={burger.id}>
           <img
             src={burger.imageSource}
@@ -31,11 +35,15 @@ const MenuStyle = styled.div`
   padding: 50px 90px;
   display: grid;
   grid-template-columns: repeat(4, 25%);
+  grid-row-gap: 60px;
+  justify-items: center;
   border-radius: 0px 0px 15px 15px;
   background: #f5f5f7;
-  height: 1300px;
   background: blue;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  overflow-y: scroll;
+
+  height: 80vh;
   .card {
     width: 200px;
     height: 270px;
