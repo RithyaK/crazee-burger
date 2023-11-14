@@ -2,13 +2,39 @@ import { BsPersonCircle } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useInfoContext } from "../../context/InfoContext";
-import ButtonAdmin from "../reusable-ui/ButtonAdmin";
+import ToggleButton from "./ToggleButton";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import ToastAdmin from "./ToastAdmin";
 
 const Navbarright = () => {
   const [username, setUsername] = useInfoContext();
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const displayToastNotification = () => {
+    if (!isModeAdmin) {
+      toast.info("Mode admin activé", {
+        // icon: <FaUserSecret size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    setIsModeAdmin(!isModeAdmin);
+  };
+
   return (
     <NavbarRightStyle className="navbarright">
-      <ButtonAdmin />
+      <ToggleButton
+        labelIfChecked="DÉSACTIVER LE MODE ADMIN"
+        labelIfUnchecked="ACTIVER LE MODE ADMIN"
+        couleurduBackground={"red"}
+        onToggle={displayToastNotification}
+      />
       <div className="info">
         <h1>
           Hey, <span className="username">{username}</span>
@@ -18,6 +44,7 @@ const Navbarright = () => {
         </NavLink>
       </div>
       <BsPersonCircle className="iconprofile" />
+      <ToastAdmin />
     </NavbarRightStyle>
   );
 };

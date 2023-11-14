@@ -1,15 +1,16 @@
 import React from "react";
-import styled from "styled-components/macro";
-import { theme } from "../../theme";
+import { theme } from "../../../../theme";
+import styled from "styled-components";
 
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked = "Fermer",
-  labelIfUnchecked = "Ouvrir",
+  labelIfChecked,
+  labelIfUnchecked,
+  couleurduBackground,
 }) {
   return (
-    <ToggleButtonStyled>
+    <ToggleButtonStyled couleurduBackground={couleurduBackground}>
       <input
         type="checkbox"
         className="toggle"
@@ -43,7 +44,7 @@ const ToggleButtonStyled = styled.div`
       height: 40px;
       width: 200px;
       position: relative;
-      font-size: ${theme.fonts.size.XXS};
+      font-size: 20px;
       letter-spacing: 0.5px;
       border: 2px solid ${theme.colors.background_dark};
       padding: 0;
@@ -89,7 +90,10 @@ const ToggleButtonStyled = styled.div`
     }
 
     &.toggle:not(:checked) + label {
-      background-color: ${theme.colors.background_dark};
+      background-color: ${(props) =>
+        props.couleurduBackground
+          ? props.couleurduBackground
+          : theme.colors.background_dark};
       /* text-align: right; */
     }
 
@@ -100,7 +104,7 @@ const ToggleButtonStyled = styled.div`
       left: auto;
       opacity: 1;
       color: ${theme.colors.primary};
-      font-weight: ${theme.fonts.weights.bold};
+      font-weight: 700;
     }
 
     // small circle when not checked
