@@ -2,17 +2,19 @@ import { BsPersonCircle } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useInfoContext } from "../../context/InfoContext";
+import ButtonAdmin from "../reusable-ui/ButtonAdmin";
 
 const Navbarright = () => {
   const [username, setUsername] = useInfoContext();
   return (
     <NavbarRightStyle className="navbarright">
+      <ButtonAdmin />
       <div className="info">
         <h1>
           Hey, <span className="username">{username}</span>
         </h1>
         <NavLink to="/">
-          <button>Se déconnecter</button>
+          <button className="disconnect">Se déconnecter</button>
         </NavLink>
       </div>
       <BsPersonCircle className="iconprofile" />
@@ -34,16 +36,6 @@ const NavbarRightStyle = styled.div`
     flex-shrink: 0;
     color: grey;
   }
-  & > * {
-    text-align: center;
-    color: #747b91;
-    text-align: right;
-    font-family: Open Sans;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px; /* 137.5% */
-  }
   .username {
     color: #ffa01b;
     font-family: Open Sans;
@@ -52,14 +44,19 @@ const NavbarRightStyle = styled.div`
     font-weight: 700;
     line-height: 22px;
   }
+  .info {
+    padding-left: 50px;
+    margin-left: 10px;
+  }
   .info h1 {
-    color: #747b91;
-    text-align: right;
     font-size: 16px;
     font-weight: 400;
     line-height: 22px; /* 137.5% */
+    color: #747b91;
+    font-family: Open Sans;
+    font-style: normal;
   }
-  button {
+  .disconnect {
     color: #747b91;
     text-align: right;
     font-family: Open Sans;
@@ -69,7 +66,7 @@ const NavbarRightStyle = styled.div`
     border: none;
     background: none;
   }
-  button:hover {
+  .disconnect:hover {
     border-bottom: 1px solid grey;
   }
 `;
