@@ -8,7 +8,7 @@ import { useInfoContext } from "../../context/InfoContext";
 const OrderPage = () => {
   //
   const { usernameparams } = useParams();
-  const [username, setUsername] = useInfoContext();
+  const { username, setUsername } = useInfoContext();
   //
   useEffect(() => {
     setUsername(usernameparams);
@@ -25,5 +25,5 @@ const OrderPage = () => {
 export default OrderPage;
 
 const ContainerStyle = styled.div`
-  padding: 24px 56px;
+  margin: 10px 56px;
 `;

@@ -8,8 +8,8 @@ import { useState } from "react";
 import ToastAdmin from "./ToastAdmin";
 
 const Navbarright = () => {
-  const [username, setUsername] = useInfoContext();
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const { username } = useInfoContext();
+  const { isModeAdmin, setIsModeAdmin } = useInfoContext();
   const displayToastNotification = () => {
     if (!isModeAdmin) {
       toast.info("Mode admin activé", {

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IoChevronForward } from "react-icons/io5";
@@ -8,7 +7,7 @@ import PrimaryButton from "../reusable-ui/PrimaryButton";
 import { useInfoContext } from "../../context/InfoContext";
 
 const LoginForm = () => {
-  const [username, setUsername] = useInfoContext();
+  const { username, setUsername } = useInfoContext();
   const navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
