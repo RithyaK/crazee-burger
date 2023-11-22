@@ -5,10 +5,11 @@ import Product from "./Product";
 import { formatPrice } from "../../../utils/maths";
 import IMGCOMINGSOON from "../../../assets/coming-soon.png";
 import Button from "../reusable-ui/Button";
+import { useRef } from "react";
 
 const Menu = () => {
   const { isModeAdmin, products, setProducts } = useInfoContext();
-
+  // const inputRef = useRef();
   function deleteButton(productIdDeleted) {
     const productsCopy = [...products];
     const productsCopyUpdated = productsCopy.filter(
@@ -19,8 +20,10 @@ const Menu = () => {
   function GenerateProducts() {
     setProducts(fakeMenu.MEDIUM);
   }
+
   return (
     <MenuStyle>
+      {/* <button onClick={() => inputRef.current.focus()}>Test</button> */}
       {products.map((product) => (
         <Product
           key={product.id}
@@ -31,6 +34,7 @@ const Menu = () => {
           title={product.title}
           hasDeleteButton={isModeAdmin}
           onDelete={() => deleteButton(product.id)}
+          // inputRef={inputRef}
         />
       ))}
       {products.length == 0 && isModeAdmin && (

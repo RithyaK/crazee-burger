@@ -7,6 +7,7 @@ const Product = ({
   leftDescription,
   hasDeleteButton,
   onDelete,
+  // inputRef,
 }) => {
   return (
     <CardStyle>
@@ -19,6 +20,11 @@ const Product = ({
         <p>{leftDescription}</p>
         <Button label={"Ajouter"} />
       </div>
+      <input
+        type="text"
+        placeholder="input"
+        //  ref={inputRef}
+      />
     </CardStyle>
   );
 };
