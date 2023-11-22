@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { IoChevronForward } from "react-icons/io5";
 import Input from "../reusable-ui/Input";
 import { BsPersonCircle } from "react-icons/bs";
-import PrimaryButton from "../reusable-ui/PrimaryButton";
+import Button from "../reusable-ui/Button";
 import { useInfoContext } from "../../context/InfoContext";
 
 const LoginForm = () => {
@@ -25,11 +25,9 @@ const LoginForm = () => {
           placeholder={"Entrez votre prénom"}
           required
           Icon={<BsPersonCircle className="icon" />}
+          className="input-login"
         />
-        <PrimaryButton
-          Icon={<IoChevronForward />}
-          label={"Accéder à mon espace"}
-        />
+        <Button Icon={<IoChevronForward />} label={"Accéder à mon espace"} />
       </div>
     </FormStyle>
   );
@@ -53,9 +51,7 @@ const FormStyle = styled.form`
     border: 1.5px solid #f56a2c;
     margin-top: 32px;
   }
-  .icon {
-    font-size: 15px;
-    color: grey;
-    margin-right: 8px;
+  .input-login {
+    margin: 18px 0;
   }
 `;

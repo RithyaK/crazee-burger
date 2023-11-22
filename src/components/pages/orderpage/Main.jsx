@@ -6,7 +6,7 @@ import Admin from "./Admin";
 import { useInfoContext } from "../../context/InfoContext";
 const Main = () => {
   //
-  const { isModeAdmin, setIsModeAdmin } = useInfoContext();
+  const { isModeAdmin } = useInfoContext();
 
   //
 

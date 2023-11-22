@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 const Context = React.createContext();
 
 export const InfoContext = (props) => {
@@ -10,7 +10,17 @@ export const InfoContext = (props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isAdding, setIsAdding] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  //
+  const [products, setProducts] = useState(fakeMenu.MEDIUM);
+  const [newProduct, setNewProduct] = useState({
+    imageSource: "",
+    title: "",
+    price: 0,
+  });
+  function AddNewProduct(newProduct) {
+    const productsCopy = [...products];
+    const productsCopyUpdated = [newProduct, ...productsCopy];
+    setProducts(productsCopyUpdated);
+  }
   const contextValue = {
     username,
     setUsername,
@@ -24,6 +34,11 @@ export const InfoContext = (props) => {
     setIsAdding,
     currentTabSelected,
     setCurrentTabSelected,
+    products,
+    setProducts,
+    AddNewProduct,
+    newProduct,
+    setNewProduct,
   };
   //
   return (

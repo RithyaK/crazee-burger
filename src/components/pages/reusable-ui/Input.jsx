@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const Input = ({ onChange, value, Icon, ...ExtraProps }) => {
+const Input = ({ onChange, value, Icon, className, ...ExtraProps }) => {
   return (
-    <InputStyle className="input-with-icon">
-      {Icon && Icon}
+    <InputStyle className={className}>
+      <div className="icon">{Icon && Icon}</div>
       <input onChange={onChange} value={value} type="text" {...ExtraProps} />
     </InputStyle>
   );
@@ -17,8 +17,14 @@ const InputStyle = styled.div`
   display: flex;
   align-items: center;
   padding: 18px 24px;
-  margin: 18px 0;
   input {
     border: none;
+  }
+  .icon {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: grey;
+    margin-right: 8px;
   }
 `;
