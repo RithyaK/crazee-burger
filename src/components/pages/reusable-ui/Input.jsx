@@ -1,10 +1,23 @@
 import styled from "styled-components";
 
-const Input = ({ onChange, value, Icon, className, ...ExtraProps }) => {
+const Input = ({
+  onChange,
+  value,
+  Icon,
+  className,
+  inputTitleRef,
+  ...ExtraProps
+}) => {
   return (
     <InputStyle className={className}>
       <div className="icon">{Icon && Icon}</div>
-      <input onChange={onChange} value={value} type="text" {...ExtraProps} />
+      <input
+        onChange={onChange}
+        value={value}
+        type="text"
+        {...ExtraProps}
+        ref={inputTitleRef}
+      />
     </InputStyle>
   );
 };
@@ -19,6 +32,9 @@ const InputStyle = styled.div`
   padding: 18px 24px;
   input {
     border: none;
+  }
+  input:focus {
+    outline: none;
   }
   .icon {
     display: flex;

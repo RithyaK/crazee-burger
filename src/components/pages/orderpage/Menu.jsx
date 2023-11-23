@@ -5,20 +5,38 @@ import Product from "./Product";
 import { formatPrice } from "../../../utils/maths";
 import IMGCOMINGSOON from "../../../assets/coming-soon.png";
 import Button from "../reusable-ui/Button";
-import { useRef } from "react";
 
 const Menu = () => {
-  const { isModeAdmin, products, setProducts } = useInfoContext();
-  // const inputRef = useRef();
-  function deleteButton(productIdDeleted) {
+  const {
+    isModeAdmin,
+    products,
+    setProducts,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    productSelected,
+    setproductSelected,
+    inputTitleRef,
+  } = useInfoContext();
+  function deleteButton(event, productIdDeleted) {
     const productsCopy = [...products];
     const productsCopyUpdated = productsCopy.filter(
       (product) => product.id !== productIdDeleted
     );
     setProducts(productsCopyUpdated);
+    console.log("child");
+    event.stopPropagation();
   }
+  console.log(productSelected);
   function GenerateProducts() {
     setProducts(fakeMenu.MEDIUM);
+  }
+  function handleClick(id) {
+    setIsCollapsed(false);
+    setCurrentTabSelected("edit");
+    const productSelectedFound = products.find((product) => product.id === id);
+    setproductSelected(productSelectedFound);
+    console.log("parent");
+    inputTitleRef.current.focus();
   }
 
   return (
@@ -33,7 +51,10 @@ const Menu = () => {
           }
           title={product.title}
           hasDeleteButton={isModeAdmin}
-          onDelete={() => deleteButton(product.id)}
+          onDelete={(event) => deleteButton(event, product.id)}
+          onClick={() => handleClick(product.id)}
+          isHoverable={isModeAdmin}
+          isSelected={productSelected.id == product.id}
           // inputRef={inputRef}
         />
       ))}

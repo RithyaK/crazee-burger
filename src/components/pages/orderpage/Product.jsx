@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Button from "../reusable-ui/Button";
 import { TiDelete } from "react-icons/ti";
 const Product = ({
@@ -7,10 +7,24 @@ const Product = ({
   leftDescription,
   hasDeleteButton,
   onDelete,
+  onClick,
+  isHoverable,
+  isSelected,
   // inputRef,
 }) => {
   return (
-    <CardStyle>
+    <CardStyle
+      onClick={onClick}
+      isHoverable={isHoverable}
+      isSelected={isSelected && isHoverable}
+      // style={
+      //   isSelected
+      //     ? {
+      //         background: "orange",
+      //       }
+      //     : {}
+      // }
+    >
       {hasDeleteButton && (
         <TiDelete className="deletebutton" onClick={onDelete} />
       )}
@@ -18,13 +32,12 @@ const Product = ({
       <h1>{title}</h1>
       <div className="description">
         <p>{leftDescription}</p>
-        <Button label={"Ajouter"} />
+        <Button
+          label={"Ajouter"}
+          onClick={(e) => e.stopPropagation()}
+          className={isSelected ? "is-selected" : ""}
+        />
       </div>
-      <input
-        type="text"
-        placeholder="input"
-        //  ref={inputRef}
-      />
     </CardStyle>
   );
 };
@@ -32,10 +45,11 @@ const Product = ({
 export default Product;
 
 const CardStyle = styled.div`
+  ${(props) => props.isHoverable && hoverableStyle}
+  ${(props) => props.isSelected && ActiveStyle}
   width: 200px;
   height: 270px;
   position: relative;
-  background: white;
   border: 1px solid grey;
   border-radius: 15px;
   text-align: center;
@@ -62,4 +76,24 @@ const CardStyle = styled.div`
     align-items: center;
     font-family: none;
   }
+  .is-selected {
+    background: white;
+    color: orange;
+  }
+  .is-selected:active {
+    background: orange;
+    color: white;
+    border: 1px solid white;
+  }
+`;
+const hoverableStyle = css`
+  &:hover {
+    border: 1px solid orange;
+    transform: scale(1.03);
+    cursor: pointer;
+  }
+`;
+
+const ActiveStyle = css`
+  background: orange;
 `;

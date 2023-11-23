@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 const Context = React.createContext();
 
@@ -16,6 +16,9 @@ export const InfoContext = (props) => {
     title: "",
     price: 0,
   });
+  const [productSelected, setproductSelected] = useState({});
+  const inputTitleRef = useRef();
+
   function AddNewProduct(newProduct) {
     const productsCopy = [...products];
     const productsCopyUpdated = [newProduct, ...productsCopy];
@@ -39,6 +42,9 @@ export const InfoContext = (props) => {
     AddNewProduct,
     newProduct,
     setNewProduct,
+    productSelected,
+    setproductSelected,
+    inputTitleRef,
   };
   //
   return (
