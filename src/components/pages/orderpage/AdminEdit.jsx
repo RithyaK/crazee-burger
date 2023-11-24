@@ -52,6 +52,7 @@ const AdminEdit = () => {
                 inputTitleRef={input.name === "title" ? inputTitleRef : null}
               />
             ))}
+            <p>Cliquer sur un produit du menu pour le modifier</p>
           </div>
         </div>
       )}

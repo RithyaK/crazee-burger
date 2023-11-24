@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import Button from "../reusable-ui/Button";
 import { TiDelete } from "react-icons/ti";
-const Product = ({
+const Card = ({
   title,
   imageSource,
   leftDescription,
@@ -17,13 +17,6 @@ const Product = ({
       onClick={onClick}
       isHoverable={isHoverable}
       isSelected={isSelected && isHoverable}
-      // style={
-      //   isSelected
-      //     ? {
-      //         background: "orange",
-      //       }
-      //     : {}
-      // }
     >
       {hasDeleteButton && (
         <TiDelete className="deletebutton" onClick={onDelete} />
@@ -42,7 +35,7 @@ const Product = ({
   );
 };
 
-export default Product;
+export default Card;
 
 const CardStyle = styled.div`
   ${(props) => props.isHoverable && hoverableStyle}
@@ -65,6 +58,9 @@ const CardStyle = styled.div`
   }
   .deletebutton:hover {
     color: red;
+  }
+  .deletebutton:active {
+    color: white;
   }
   img {
     object-fit: contain;

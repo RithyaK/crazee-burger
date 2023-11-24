@@ -1,7 +1,7 @@
 import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import styled from "styled-components";
 import { useInfoContext } from "../../context/InfoContext";
-import Product from "./Product";
+import Card from "./Card";
 import { formatPrice } from "../../../utils/maths";
 import IMGCOMINGSOON from "../../../assets/coming-soon.png";
 import Button from "../reusable-ui/Button";
@@ -30,20 +30,23 @@ const Menu = () => {
   function GenerateProducts() {
     setProducts(fakeMenu.MEDIUM);
   }
-  function handleClick(id) {
-    setIsCollapsed(false);
-    setCurrentTabSelected("edit");
+  async function handleClick(id) {
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
     const productSelectedFound = products.find((product) => product.id === id);
-    setproductSelected(productSelectedFound);
+    await setproductSelected(productSelectedFound);
     console.log("parent");
     inputTitleRef.current.focus();
   }
-
+  function checkIfSelected(idProductMenu, idProductSelected) {
+    if (isModeAdmin) {
+      return idProductMenu === idProductSelected;
+    }
+  }
   return (
     <MenuStyle>
-      {/* <button onClick={() => inputRef.current.focus()}>Test</button> */}
       {products.map((product) => (
-        <Product
+        <Card
           key={product.id}
           leftDescription={formatPrice(product.price)}
           imageSource={
@@ -52,10 +55,9 @@ const Menu = () => {
           title={product.title}
           hasDeleteButton={isModeAdmin}
           onDelete={(event) => deleteButton(event, product.id)}
-          onClick={() => handleClick(product.id)}
+          onClick={() => (isModeAdmin ? handleClick(product.id) : null)}
           isHoverable={isModeAdmin}
-          isSelected={productSelected.id == product.id}
-          // inputRef={inputRef}
+          isSelected={checkIfSelected(product.id, productSelected.id)}
         />
       ))}
       {products.length == 0 && isModeAdmin && (

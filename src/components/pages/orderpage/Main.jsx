@@ -13,7 +13,7 @@ const Main = () => {
   //
   return (
     <MainStyle>
-      {/* <div className="basket">basket</div> */}
+      <div className="basket"></div>
       <div className="panel-and-admin">
         <Menu />
         {isModeAdmin && <Admin />}
@@ -27,11 +27,11 @@ export default Main;
 const MainStyle = styled.div`
   display: grid;
   flex: 1;
-  grid-template-columns: 1fr;
+  grid-template-columns: 25% 1fr;
   .panel-and-admin {
     position: relative;
   }
   .basket {
-    background: red;
+    background: grey;
   }
 `;

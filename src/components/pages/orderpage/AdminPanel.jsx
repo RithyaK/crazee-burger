@@ -10,8 +10,8 @@ const AdminPanel = () => {
   const tabSelected = tabs.find((tab) => currentTabSelected === tab.index);
   return (
     <AdminPanelStyled>
-      {tabSelected.index == "add" && <AdminAdd />}
-      {tabSelected.index == "edit" && <AdminEdit />}
+      {tabSelected && tabSelected.Content}
+      {/* {tabSelected.index == "edit" && tabSelected.Content} */}
     </AdminPanelStyled>
   );
 };
