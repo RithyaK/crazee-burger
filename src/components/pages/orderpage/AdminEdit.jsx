@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useInfoContext } from "../../context/InfoContext";
 import Input from "../reusable-ui/Input";
 import { inputTextConfig } from "./inputTextConfig";
-import { useRef } from "react";
+
 const AdminEdit = () => {
   const {
     productSelected,
