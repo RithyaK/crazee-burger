@@ -1,5 +1,5 @@
-// const HintMessage = () => {
-//   return <div>Cliquer pour modifier un produit</div>;
-// };
+const HintMessage = () => {
+  return <p>Cliquer sur un produit du menu pour le modifier</p>;
+};
 
-// export default HintMessage;
+export default HintMessage;

@@ -19,7 +19,7 @@ const AdminTabs = () => {
     setIsCollapsed(false);
     setCurrentTabSelected(tabSelected);
   }
-  const tabs = tabsConfig;
+  const tabs = tabsConfig();
   return (
     <AdminTabsStyled>
       <AdminTab

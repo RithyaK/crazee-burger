@@ -13,6 +13,9 @@ export default Button;
 
 const ButtonStyle = styled.button`
   ${({ version }) => extraStyle[version]}
+  &:active {
+    background: orange;
+  }
 `;
 
 const extraStyleSuccess = css`

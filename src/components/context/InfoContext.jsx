@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
+import EMPTY_PRODUCT from "../pages/orderpage/emptyproduct";
 const Context = React.createContext();
 
 export const InfoContext = (props) => {
@@ -11,11 +12,7 @@ export const InfoContext = (props) => {
   const [isAdding, setIsAdding] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [products, setProducts] = useState(fakeMenu.MEDIUM);
-  const [newProduct, setNewProduct] = useState({
-    imageSource: "",
-    title: "",
-    price: 0,
-  });
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setproductSelected] = useState({});
   const inputTitleRef = useRef();
 

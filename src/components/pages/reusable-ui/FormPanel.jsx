@@ -1,9 +1,16 @@
 import styled from "styled-components";
 import Input from "./Input";
-import Button from "./Button";
 import { inputTextConfig } from "../orderpage/inputTextConfig";
+import ButtonSubmit from "../orderpage/ButtonSubmit";
 
-const FormPanel = ({ onSubmit, onChange, product, isButtonSubmitted }) => {
+const FormPanel = ({
+  onSubmit,
+  onChange,
+  product,
+  isButtonSubmitted,
+  inputTitleRef,
+  children,
+}) => {
   const inputTexts = inputTextConfig(product);
 
   return (
@@ -17,18 +24,14 @@ const FormPanel = ({ onSubmit, onChange, product, isButtonSubmitted }) => {
       </div>
       <div className="inputs">
         {inputTexts.map((input) => (
-          <Input key={input.id} {...input} onChange={onChange} />
+          <Input
+            key={input.id}
+            {...input}
+            onChange={onChange}
+            inputTitleRef={input.name === "title" ? inputTitleRef : null}
+          />
         ))}
-      </div>
-      <div className="button">
-        <Button
-          label={"Ajouter un nouveau produit au menu"}
-          className={isButtonSubmitted ? "button-submitted" : ""}
-          version="success"
-        />
-        {isButtonSubmitted && (
-          <p className="button-submitted">Produit ajouté avec succès</p>
-        )}
+        <div>{children}</div>
       </div>
     </FormStyle>
   );
@@ -37,10 +40,11 @@ const FormPanel = ({ onSubmit, onChange, product, isButtonSubmitted }) => {
 export default FormPanel;
 
 const FormStyle = styled.form`
-  height: 90%;
+box-sizing:border-box;
+padding: 20px;
+height:100%;
   width: 70%;
   margin-left: 100px;
-  padding-top: 10px;
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr 3fr;
@@ -48,6 +52,8 @@ const FormStyle = styled.form`
   .image-preview {
     border: 1px solid grey;
     grid-area: 1/1/2/2;
+    max-height: 200px ;
+    max-width: 200px;
     img {
       width: 100%;
       height: 100%;

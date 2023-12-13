@@ -1,7 +1,8 @@
 import AdminAdd from "./AdminAdd";
 import AdminEdit from "./AdminEdit";
+import HintMessage from "./HintMessage";
 
-export const tabsConfig = [
+export const tabsConfig = (hasNotBeenClicked) => [
   {
     index: "add",
     title: "Ajouter un produit",
@@ -10,6 +11,6 @@ export const tabsConfig = [
   {
     index: "edit",
     title: "modifier un produit",
-    Content: <AdminEdit />,
+    Content: hasNotBeenClicked ? <HintMessage /> : <AdminEdit />,
   },
 ];

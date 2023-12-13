@@ -4,6 +4,7 @@ import Input from "../reusable-ui/Input";
 import Button from "../reusable-ui/Button";
 import { inputTextConfig } from "./inputTextConfig";
 import FormPanel from "../reusable-ui/FormPanel";
+import ButtonSubmit from "./ButtonSubmit";
 const AdminAdd = () => {
   const { AddNewProduct, newProduct, setNewProduct } = useInfoContext();
   const [isButtonSubmitted, setIsButtonSubmitted] = useState(false);
@@ -27,7 +28,9 @@ const AdminAdd = () => {
       onChange={handleChange}
       isButtonSubmitted={isButtonSubmitted}
       product={newProduct}
-    />
+    >
+      <ButtonSubmit isButtonSubmitted={isButtonSubmitted} />
+    </FormPanel>
   );
 };
 

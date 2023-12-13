@@ -3,10 +3,12 @@ import { useInfoContext } from "../../context/InfoContext";
 import { tabsConfig } from "./tabsConfig";
 import AdminAdd from "./AdminAdd";
 import AdminEdit from "./AdminEdit";
+import EMPTY_PRODUCT from "./emptyproduct";
 
 const AdminPanel = () => {
-  const { currentTabSelected } = useInfoContext();
-  const tabs = tabsConfig;
+  const { currentTabSelected, productSelected } = useInfoContext();
+  const hasNotBeenClicked = EMPTY_PRODUCT == productSelected;
+  const tabs = tabsConfig(hasNotBeenClicked);
   const tabSelected = tabs.find((tab) => currentTabSelected === tab.index);
   return (
     <AdminPanelStyled>
