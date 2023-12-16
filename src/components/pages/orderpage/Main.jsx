@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Menu from "./Menu";
-import Basket from "./Basket";
+import Basket from "./../orderpage/basket/Basket";
 import { useState } from "react";
 import Admin from "./Admin";
 import { useInfoContext } from "../../context/InfoContext";
@@ -13,7 +13,7 @@ const Main = () => {
   //
   return (
     <MainStyle>
-      <div className="basket"></div>
+      <Basket />
       <div className="panel-and-admin">
         <Menu />
         {isModeAdmin && <Admin />}
@@ -30,8 +30,5 @@ const MainStyle = styled.div`
   grid-template-columns: 25% 1fr;
   .panel-and-admin {
     position: relative;
-  }
-  .basket {
-    background: grey;
   }
 `;
