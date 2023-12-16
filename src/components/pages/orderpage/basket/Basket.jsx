@@ -17,22 +17,4 @@ export default Basket;
 const BasketStyle = styled.div`
   display: flex;
   flex-direction: column;
-  .head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 28px;
-    height: 100%;
-  }
-  .body {
-    flex: 1;
-    background: white;
-    font-size: 25px;
-  }
-  .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 23px;
-  }
 `;

@@ -1,7 +1,13 @@
-import React from "react";
+import styled from "styled-components";
 
 const Body = () => {
-  return <div className="body">Votre commande est vide</div>;
+  return <BodyStyled>Votre commande est vide</BodyStyled>;
 };
 
 export default Body;
+
+const BodyStyled = styled.div`
+  flex: 1;
+  background: white;
+  font-size: 25px;
+`;
