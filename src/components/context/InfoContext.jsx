@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
-import EMPTY_PRODUCT from "../pages/orderpage/emptyproduct";
+import EMPTY_PRODUCT from "../pages/orderpage/enums";
+// import EMPTY_PRODUCT from "../pages/orderpage/emptyproduct";
 const Context = React.createContext();
 
 export const InfoContext = (props) => {
@@ -13,9 +14,12 @@ export const InfoContext = (props) => {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [products, setProducts] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [productSelected, setproductSelected] = useState({});
-  const inputTitleRef = useRef();
+  const [productSelected, setProductSelected] = useState({});
+  const [basketList, setBasketList] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  // let totalPrice =
 
+  const inputTitleRef = useRef();
   function AddNewProduct(newProduct) {
     const productsCopy = [...products];
     const productsCopyUpdated = [newProduct, ...productsCopy];
@@ -40,8 +44,12 @@ export const InfoContext = (props) => {
     newProduct,
     setNewProduct,
     productSelected,
-    setproductSelected,
+    setProductSelected,
+    basketList,
+    setBasketList,
     inputTitleRef,
+    totalPrice,
+    setTotalPrice,
   };
   //
   return (

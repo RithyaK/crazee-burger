@@ -5,6 +5,9 @@ import Card from "./Card";
 import { formatPrice } from "../../../utils/maths";
 import IMGCOMINGSOON from "../../../assets/coming-soon.png";
 import Button from "../reusable-ui/Button";
+import useBasket from "../../../hooks/useBasket";
+import { findinArray } from "../../../utils/array";
+// import { useGetTotalPrice } from "../../../hooks/useGetTotalPrice";
 
 const Menu = () => {
   const {
@@ -14,9 +17,11 @@ const Menu = () => {
     setIsCollapsed,
     setCurrentTabSelected,
     productSelected,
-    setproductSelected,
+    setProductSelected,
     inputTitleRef,
   } = useInfoContext();
+  const { handleAddTobasket } = useBasket();
+  // const { getTotalPrice } = useGetTotalPrice();
   function deleteButton(event, productIdDeleted) {
     const productsCopy = [...products];
     const productsCopyUpdated = productsCopy.filter(
@@ -26,7 +31,6 @@ const Menu = () => {
     console.log("child");
     event.stopPropagation();
   }
-  console.log(productSelected);
   function GenerateProducts() {
     setProducts(fakeMenu.MEDIUM);
   }
@@ -34,14 +38,19 @@ const Menu = () => {
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     const productSelectedFound = products.find((product) => product.id === id);
-    await setproductSelected(productSelectedFound);
-    console.log("parent");
+    await setProductSelected(productSelectedFound);
     inputTitleRef.current.focus();
   }
   function checkIfSelected(idProductMenu, idProductSelected) {
     if (isModeAdmin) {
       return idProductMenu === idProductSelected;
     }
+  }
+  function addCardToList(e, idProductToAdd) {
+    const productClicked = findinArray(idProductToAdd, products);
+    e.stopPropagation();
+    handleAddTobasket(productClicked);
+    // Pourquoi créer une copie ?
   }
   return (
     <MenuStyle>
@@ -58,6 +67,7 @@ const Menu = () => {
           onClick={() => (isModeAdmin ? handleClick(product.id) : null)}
           isHoverable={isModeAdmin}
           isSelected={checkIfSelected(product.id, productSelected.id)}
+          onAddTolist={(e) => addCardToList(e, product.id)}
         />
       ))}
       {products.length == 0 && isModeAdmin && (

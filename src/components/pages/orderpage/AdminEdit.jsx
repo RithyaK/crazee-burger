@@ -8,10 +8,12 @@ import HintMessage from "./HintMessage";
 const AdminEdit = () => {
   const {
     productSelected,
-    setproductSelected,
+    setProductSelected,
     products,
     setProducts,
     inputTitleRef,
+    basketList,
+    setBasketList,
   } = useInfoContext();
   function handleEdit(productBeingEdited) {
     const productsCopy = [...products];
@@ -20,6 +22,15 @@ const AdminEdit = () => {
     );
     productsCopy[indexOfProductBeingUpdated] = productBeingEdited;
     setProducts(productsCopy);
+
+    const basketListCopy = [...basketList];
+    const indexOfProductInbasket = basketList.findIndex(
+      (product) => product.id === productBeingEdited.id
+    );
+    basketListCopy[indexOfProductInbasket] = productBeingEdited;
+    basketListCopy[indexOfProductInbasket];
+    console.log(basketListCopy);
+    setBasketList(basketListCopy);
   }
 
   function handleChange(e) {
@@ -27,7 +38,7 @@ const AdminEdit = () => {
       ...productSelected,
       [e.target.name]: e.target.value,
     };
-    setproductSelected(productBeingUpdated);
+    setProductSelected(productBeingUpdated);
     handleEdit(productBeingUpdated);
   }
   // const inputTexts = inputTextConfig(productSelected);

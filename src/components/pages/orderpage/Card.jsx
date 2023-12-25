@@ -10,6 +10,7 @@ const Card = ({
   onClick,
   isHoverable,
   isSelected,
+  onAddTolist,
   // inputRef,
 }) => {
   return (
@@ -22,12 +23,12 @@ const Card = ({
         <TiDelete className="deletebutton" onClick={onDelete} />
       )}
       <img src={imageSource} alt={title} width="200px" height="145px" />
-      <h1>{title}</h1>
+      <h1 className="title">{title}</h1>
       <div className="description">
         <p>{leftDescription}</p>
         <Button
           label={"Ajouter"}
-          onClick={(e) => e.stopPropagation()}
+          onClick={onAddTolist}
           className={isSelected ? "is-selected" : ""}
         />
       </div>
@@ -80,6 +81,12 @@ const CardStyle = styled.div`
     background: orange;
     color: white;
     border: 1px solid white;
+  }
+  .title {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 `;
 const hoverableStyle = css`
